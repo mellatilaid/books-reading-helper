@@ -1,4 +1,5 @@
 import 'package:books_reading_helper/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:books_reading_helper/features/home/presentation/views/widgets/custom_book_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -12,10 +13,7 @@ class HomeViewBody extends StatelessWidget {
         SizedBox(
           height: 16,
         ),
-        ListTile(
-          leading: Icon(Icons.picture_as_pdf),
-          title: Text('Clean Code'),
-        )
+        CustomBookItem(bookTitle: 'Clean code'),
       ],
     );
   }
