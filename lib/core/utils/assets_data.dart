@@ -1,3 +1,3 @@
 abstract class AssetsData {
-  static const String uplaodFile = 'assets/home_page_image.webp';
+  static const String bookItemLogo = 'assets/images/book_item_logo.png';
 }
