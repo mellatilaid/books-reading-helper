@@ -4,8 +4,8 @@ class PermissionException implements Exception {
   PermissionException(this.message);
 }
 
-class FileSystemException implements Exception {
+class FileScanException implements Exception {
   final String message;
 
-  FileSystemException(this.message);
+  FileScanException(this.message);
 }

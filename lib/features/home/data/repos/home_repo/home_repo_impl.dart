@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:books_reading_helper/core/errors/exceptions.dart';
 import 'package:books_reading_helper/features/home/data/repos/home_repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:path_provider/path_provider.dart';
@@ -20,16 +19,18 @@ class HomeRepoImpl implements HomeRepo {
       if (dir != null) {
         await scanDirectory(dir, pdfFiles);
       } else {
-        return left(GetStorageFilesFailure('Storage unvailable'));
+        return left(StorageFilesFailure('Storage unvailable'));
       }
       if (pdfFiles.isEmpty) {
-        return left(GetStorageFilesFailure('No pdf files found'));
+        return left(StorageFilesFailure('No pdf files found'));
       }
       return right(pdfFiles);
-    } on FileSystemException catch (e) {
-      return left(GetStorageFilesFailure('File system error ${e.message}'));
-    } on PermissionException catch (e) {
-      return left(GetStorageFilesFailure(e.message));
+    } on Exception catch (e) {
+      return left(StorageFilesFailure.fromStorage(e));
+    } catch (e) {
+      return left(
+        StorageFilesFailure('Unexpected error occurred ${e.toString()}'),
+      );
     }
   }
 }
