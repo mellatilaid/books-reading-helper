@@ -14,7 +14,7 @@ class HomeRepoImpl implements HomeRepo {
     List<File> pdfFiles = [];
     try {
       await requestStoragePermission();
-      Directory? dir = await getExternalStorageDirectory();
+      Directory? dir = await getDownloadsDirectory();
 
       if (dir != null) {
         await scanDirectory(dir, pdfFiles);
