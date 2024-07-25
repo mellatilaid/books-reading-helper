@@ -1,6 +1,5 @@
+import 'package:books_reading_helper/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
-
-import 'features/home/presentation/views/home_view.dart';
 
 void main() {
   runApp(const BooksReadingHelper());
@@ -11,9 +10,9 @@ class BooksReadingHelper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-      home: HomeView(),
     );
   }
 }
