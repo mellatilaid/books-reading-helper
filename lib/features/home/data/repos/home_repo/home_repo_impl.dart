@@ -4,6 +4,7 @@ import 'package:books_reading_helper/core/local_storage_services/base_directory.
 import 'package:books_reading_helper/core/local_storage_services/get_files.dart';
 import 'package:books_reading_helper/features/home/data/repos/home_repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../../core/errors/failures.dart';
 
@@ -22,6 +23,8 @@ class HomeRepoImpl implements HomeRepo {
       } else {
         return left(StorageFilesFailure('No directory found for pdf files'));
       }
+    } on PlatformException catch (e) {
+      return left(StorageFilesFailure.fromStorage(e));
     } on Exception catch (e) {
       return left(StorageFilesFailure.fromStorage(e));
     } catch (e) {

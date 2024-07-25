@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:books_reading_helper/core/errors/exceptions.dart';
 
 abstract class Failures {
@@ -10,12 +12,18 @@ class StorageFilesFailure extends Failures {
   StorageFilesFailure(super.errMessage);
 
   factory StorageFilesFailure.fromStorage(Exception e) {
-    if (e is FileScanException) {
-      return StorageFilesFailure(e.toString());
-    } else if (e is PermissionException) {
-      return StorageFilesFailure(e.toString());
-    } else {
-      return StorageFilesFailure('Unexpected error occurred, Please try again');
+    switch (e) {
+      case PermissionException():
+        return StorageFilesFailure(e.toString());
+      case FileScanException():
+        return StorageFilesFailure(e.toString());
+      case FileSystemException():
+        return StorageFilesFailure(
+            'File system exception occurred ${e.toString()} ');
+      case IOException():
+        return StorageFilesFailure('IO exception occurred ${e.toString()} ');
+      default:
+        return StorageFilesFailure('unexpected error accured ${e.toString()}');
     }
   }
 }
