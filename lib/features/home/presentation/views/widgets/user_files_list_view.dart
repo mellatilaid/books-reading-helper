@@ -10,10 +10,14 @@ class UserFilesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: pdfFiles.length,
-        itemBuilder: (context, index) {
-          return CustomBookItem(bookTitle: pth.basename(pdfFiles[index]));
-        });
+    return ListView.separated(
+      itemCount: pdfFiles.length,
+      separatorBuilder: (context, index) => Divider(color: Colors.grey[300]),
+      itemBuilder: (context, index) {
+        return CustomBookItem(
+          bookTitle: pth.basename(pdfFiles[index]),
+        );
+      },
+    );
   }
 }
