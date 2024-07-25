@@ -8,7 +8,7 @@ final class FetchDownloadedFilesInitial extends FetchDownloadedFilesState {}
 final class FetchDownloadedFilesLoading extends FetchDownloadedFilesState {}
 
 final class FetchDownloadedFilesSuccess extends FetchDownloadedFilesState {
-  final List<File> filesPaths;
+  final List<BooksType> filesPaths;
 
   FetchDownloadedFilesSuccess(this.filesPaths);
 }

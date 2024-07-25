@@ -1,5 +1,5 @@
 import 'package:books_reading_helper/features/home/presentation/manager/fetchdownloadedfiles/fetch_downloaded_files_cubit.dart';
-import 'package:books_reading_helper/features/home/presentation/views/widgets/home_view_body.dart';
+import 'package:books_reading_helper/features/home/presentation/views/widgets/user_files_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +30,7 @@ class _UserLocalBooksListViewBuilderState
             child: CircularProgressIndicator(),
           );
         } else if (state is FetchDownloadedFilesSuccess) {
-          return DownLoadedFilesListView(
+          return UserFilesListView(
             pdfFiles: state.filesPaths,
           );
         } else if (state is FetchDownloadedFilesFailure) {

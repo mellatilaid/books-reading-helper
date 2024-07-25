@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:books_reading_helper/core/local_storage_services/base_directory.dart';
 import 'package:books_reading_helper/core/local_storage_services/get_files.dart';
+import 'package:books_reading_helper/core/utils/const.dart';
 import 'package:books_reading_helper/features/home/data/repos/home_repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
@@ -10,8 +11,8 @@ import '../../../../../core/errors/failures.dart';
 
 class HomeRepoImpl implements HomeRepo {
   @override
-  Future<Either<Failures, List<File>>> getUserDownloadedPdfs() async {
-    List<File> pdfFiles = [];
+  Future<Either<Failures, List<BooksType>>> getUserDownloadedPdfs() async {
+    List<BooksType> pdfFiles = [];
     try {
       final String? directoryPath = await baseDirectory();
 
