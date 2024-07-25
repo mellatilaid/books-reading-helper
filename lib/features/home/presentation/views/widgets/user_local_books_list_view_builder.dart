@@ -30,7 +30,9 @@ class _UserLocalBooksListViewBuilderState
             child: CircularProgressIndicator(),
           );
         } else if (state is FetchDownloadedFilesSuccess) {
-          return const DownLoadedFilesListView();
+          return DownLoadedFilesListView(
+            pdfFiles: state.filesPaths,
+          );
         } else if (state is FetchDownloadedFilesFailure) {
           return Center(child: Text(state.errMessage));
         } else {

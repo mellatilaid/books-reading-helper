@@ -8,9 +8,9 @@ final class FetchDownloadedFilesInitial extends FetchDownloadedFilesState {}
 final class FetchDownloadedFilesLoading extends FetchDownloadedFilesState {}
 
 final class FetchDownloadedFilesSuccess extends FetchDownloadedFilesState {
-  final List<File> pdfFiles;
+  final List<File> filesPaths;
 
-  FetchDownloadedFilesSuccess(this.pdfFiles);
+  FetchDownloadedFilesSuccess(this.filesPaths);
 }
 
 final class FetchDownloadedFilesFailure extends FetchDownloadedFilesState {
